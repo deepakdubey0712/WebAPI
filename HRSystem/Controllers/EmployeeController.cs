@@ -24,14 +24,14 @@ public class EmployeeController : ControllerBase
     }
 
     [HttpPost]
-    public async Task<IActionResult> Create(Employee employee)
+    public async Task<IActionResult> Create([FromBody] Employee employee)
     {
         var created = await _service.AddAsync(employee);
         return CreatedAtAction(nameof(GetById), new { id = created.EmployeeID }, created);
     }
 
     [HttpPut("{id}")]
-    public async Task<IActionResult> Update(int id, Employee employee)
+    public async Task<IActionResult> Update(int id, [FromBody] Employee employee)
     {
         if (id != employee.EmployeeID) return BadRequest();
         var updated = await _service.UpdateAsync(employee);

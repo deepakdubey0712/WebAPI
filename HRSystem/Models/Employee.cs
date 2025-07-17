@@ -1,13 +1,12 @@
+using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 namespace HRSystem.Models
 {
-
-
-
     [Table("employees")]
-
     public class Employee
     {
+        [Key]
+        [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
 
         [Column("employeeid")]
         public int EmployeeID { get; set; }

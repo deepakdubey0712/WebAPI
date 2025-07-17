@@ -19,9 +19,11 @@ builder.Services.AddDbContext<AppDbContext>(options =>
            .LogTo(Console.WriteLine));
 
 
-
-builder.Services.AddScoped<IEmployeeRepository, EmployeeRepository>();
 builder.Services.AddScoped<IEmployeeService, EmployeeService>();
+builder.Services.AddScoped<IEmployeeRepository, EmployeeRepository>();
+
+builder.Services.AddScoped<IDeductionComponentService, DeductionComponentService>();
+builder.Services.AddScoped<IDeductionComponentRepository, DeductionComponentRepository>();
 
 
 
