@@ -1,0 +1,14 @@
+using System.ComponentModel.DataAnnotations.Schema;
+
+namespace HRSystem.Models
+{
+    [Table("departments")]
+    public class Department
+    {
+        [Column("departmentid")]
+        public int DepartmentID { get; set; }
+
+        [Column("departmentname")]
+        public string? DepartmentName { get; set; }
+    }
+}
