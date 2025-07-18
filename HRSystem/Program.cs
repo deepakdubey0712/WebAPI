@@ -26,7 +26,8 @@ builder.Services.AddScoped<IGradeRepository, GradeRepository>();
 builder.Services.AddScoped<IGradeService, GradeService>();
 builder.Services.AddScoped<IPromotionRepository, PromotionRepository>();
 builder.Services.AddScoped<IPromotionService, PromotionService>();
-
+builder.Services.AddScoped<IEmployeeGradeRepository, EmployeeGradeRepository>();
+builder.Services.AddScoped<IEmployeeGradeService, EmployeeGradeService>();
 builder.Services.AddScoped<IDeductionComponentService, DeductionComponentService>();
 builder.Services.AddScoped<IDeductionComponentRepository, DeductionComponentRepository>();
 

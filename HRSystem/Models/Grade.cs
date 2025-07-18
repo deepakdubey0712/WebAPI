@@ -1,10 +1,13 @@
+using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 
 namespace HRSystem.Models
 {
- [Table("employees")]
+ [Table("grades")]
     public class Grade
     {
+        [Key]
+        [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         [Column("gradeid")]
         public int GradeID { get; set; }
 

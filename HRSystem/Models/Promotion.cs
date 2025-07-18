@@ -1,3 +1,4 @@
+using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 
 namespace HRSystem.Models
@@ -5,6 +6,8 @@ namespace HRSystem.Models
     [Table("promotions")]
     public class Promotion
     {
+        [Key]
+        [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         [Column("promotionid")]
         public int PromotionID { get; set; }
 
