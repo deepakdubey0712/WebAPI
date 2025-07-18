@@ -30,6 +30,9 @@ builder.Services.AddScoped<IEmployeeGradeRepository, EmployeeGradeRepository>();
 builder.Services.AddScoped<IEmployeeGradeService, EmployeeGradeService>();
 builder.Services.AddScoped<IDeductionComponentService, DeductionComponentService>();
 builder.Services.AddScoped<IDeductionComponentRepository, DeductionComponentRepository>();
+builder.Services.AddScoped<IEmployeeDepartmentService, EmployeeDepartmentService>();
+builder.Services.AddScoped<IEmployeeDepartmentRepository, EmployeeDepartmentRepository>();
+
 
 
 
@@ -40,8 +43,11 @@ if (app.Environment.IsDevelopment())
 {
     app.UseSwagger();
     app.UseSwaggerUI();
+    app.UseDeveloperExceptionPage();
 }
 
+app.UseMiddleware<ExceptionMiddleware>();
+app.UseRouting();
 app.UseAuthorization();
 app.MapControllers();
 app.Run();
