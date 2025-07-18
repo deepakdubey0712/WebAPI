@@ -1,3 +1,5 @@
+using HRSystem.Models;
+
 public interface IEmployeeDepartmentRepository
 {
     Task<IEnumerable<EmployeeDepartment>> GetAllAsync();

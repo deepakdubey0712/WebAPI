@@ -1,16 +1,35 @@
 using System;
 using System.ComponentModel.DataAnnotations;
-using System.ComponentModel.DataAnnotations.Schema; 
-using HRSystem.Models;
-public class EmployeeDepartment
-{
-    public int EmpDeptID { get; set; }
-    public int EmployeeID { get; set; }
-    public int DepartmentID { get; set; }
-    public DateTime StartDate { get; set; }
-    public DateTime? EndDate { get; set; }
+using System.ComponentModel.DataAnnotations.Schema;
 
-    // Navigation properties (optional)
-    public Employee? Employee { get; set; }
-    public Department? Department { get; set; }
+namespace HRSystem.Models
+{
+
+    [Table("employeedepartment")]
+    public class EmployeeDepartment
+    {
+
+        [Key]
+        [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
+        [Column("empdeptid")]
+        public int EmpDeptID { get; set; }
+
+        [Column("employeeid")]
+        public int EmployeeID { get; set; }
+
+        [Column("departmentid")]
+        public int DepartmentID { get; set; }
+
+        [Column("startdate")]
+        public DateTime StartDate { get; set; }
+
+        [Column("enddate")]
+        public DateTime? EndDate { get; set; }
+
+        // Navigation properties (optional, if using EF Core relationships)
+        public Employee? Employee { get; set; }
+        public Department? Department { get; set; }
+        
+    }
+
 }
