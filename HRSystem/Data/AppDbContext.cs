@@ -15,6 +15,8 @@ namespace HRSystem.Data
         public DbSet<EmployeeGrade> EmployeeGrades { get; set; }
         public DbSet<SalaryComponent> SalaryComponents { get; set; }
         public DbSet<EmployeeSalary> EmployeeSalaries { get; set; }
+        public DbSet<Payslip> Payslips { get; set; }
+        public DbSet<PayslipComponent> PayslipComponents { get; set; }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
@@ -28,9 +30,11 @@ namespace HRSystem.Data
             modelBuilder.Entity<EmployeeGrade>().ToTable("employeegrades", "public");
             modelBuilder.Entity<SalaryComponent>().ToTable("salarycomponents", "public");
             modelBuilder.Entity<EmployeeSalary>().ToTable("employeesalaries", "public");
+            modelBuilder.Entity<Payslip>().ToTable("payslips", "public");
+            modelBuilder.Entity<PayslipComponent>().ToTable("payslipcomponents", "public");
         }
 
-        
+
 
     }
 }
