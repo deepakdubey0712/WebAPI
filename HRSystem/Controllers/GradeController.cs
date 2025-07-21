@@ -7,24 +7,29 @@ using HRSystem.Services;
 public class GradeController : ControllerBase
 {
     private readonly IGradeService _service;
+
     public GradeController(IGradeService service)
     {
         _service = service;
     }
+
     [HttpGet]
     public async Task<IActionResult> GetAll() => Ok(await _service.GetAllAsync());
-    [HttpGet("{id}")]
-    public async Task<IActionResult> GetById(int id)
-    {
-        var grade = await _service.GetByIdAsync(id);
-        return grade == null ? NotFound() : Ok(grade);
-    }
+
     [HttpPost]
     public async Task<IActionResult> Create(Grade grade)
     {
         var created = await _service.AddAsync(grade);
         return CreatedAtAction(nameof(GetById), new { id = created.GradeID }, created);
     }
+
+    [HttpGet("{id}")]
+    public async Task<IActionResult> GetById(int id)
+    {
+        var grade = await _service.GetByIdAsync(id);
+        return grade == null ? NotFound() : Ok(grade);
+    }
+
     [HttpPut("{id}")]
     public async Task<IActionResult> Update(int id, Grade grade)
     {

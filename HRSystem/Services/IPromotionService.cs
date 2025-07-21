@@ -9,5 +9,7 @@ namespace HRSystem.Services
         Task<Promotion> AddAsync(Promotion promotion);
         Task<Promotion> UpdateAsync(Promotion promotion);
         Task<bool> DeleteAsync(int id);
+
+        Task<IEnumerable<Promotion>> GetByEmployeeIdAsync(int employeeId);
     }
 }

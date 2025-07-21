@@ -46,4 +46,7 @@ public class PromotionController : ControllerBase
         var deleted = await _service.DeleteAsync(id);
         return deleted ? NoContent() : NotFound();
     }
+
+  
+
 }

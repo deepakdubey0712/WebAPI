@@ -9,5 +9,8 @@ namespace HRSystem.Repositories
         Task<Promotion> AddAsync(Promotion promotion);
         Task<Promotion> UpdateAsync(Promotion promotion);
         Task<bool> DeleteAsync(int id);
+
+   
+
     }
 }

@@ -7,6 +7,7 @@ namespace HRSystem.Models
     public class EmployeeSalary
     {
         [Key]
+        [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         [Column("employeesalaryid")]
         public int EmployeeSalaryID { get; set; }
 

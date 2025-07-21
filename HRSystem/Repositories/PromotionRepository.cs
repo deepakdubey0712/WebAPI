@@ -4,9 +4,9 @@ using HRSystem.Repositories;
 using Microsoft.EntityFrameworkCore;
 
 
-    public class PromotionRepository : IPromotionRepository
-    {
-        private readonly AppDbContext _context;
+public class PromotionRepository : IPromotionRepository
+{
+    private readonly AppDbContext _context;
 
     public PromotionRepository(AppDbContext context)
     {
@@ -40,4 +40,7 @@ using Microsoft.EntityFrameworkCore;
         await _context.SaveChangesAsync();
         return true;
     }
-    }
+
+  
+
+}

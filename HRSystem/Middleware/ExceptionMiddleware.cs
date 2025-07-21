@@ -46,7 +46,7 @@ public class ExceptionMiddleware
 
             default:
                 statusCode = StatusCodes.Status500InternalServerError;
-                message = "An unexpected error occurred.";
+                message = exception.Message ?? "An unexpected error occurred.";
                 break;
         }
 
