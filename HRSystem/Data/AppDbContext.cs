@@ -34,8 +34,6 @@ namespace HRSystem.Data
             modelBuilder.Entity<PayslipComponent>().ToTable("payslipcomponents", "public");
         }
 
-
-
     }
 }
 

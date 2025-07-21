@@ -21,5 +21,11 @@ namespace HRSystem.Services
         public async Task<Promotion> UpdateAsync(Promotion promotion) => await _repository.UpdateAsync(promotion);
 
         public async Task<bool> DeleteAsync(int id) => await _repository.DeleteAsync(id);
+
+        public async Task<IEnumerable<Promotion>> GetByEmployeeIdAsync(int employeeId)
+        {
+            return await _repository.GetByEmployeeIdAsync(employeeId);
+        }
+
     }
 }

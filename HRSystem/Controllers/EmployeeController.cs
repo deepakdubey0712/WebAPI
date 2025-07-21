@@ -3,7 +3,7 @@ using HRSystem.Models;
 using HRSystem.Services;
 
 [ApiController]
-[Route("api/[controller]")]
+[Route("api/employees")]
 public class EmployeeController : ControllerBase
 {
     private readonly IEmployeeService _service;

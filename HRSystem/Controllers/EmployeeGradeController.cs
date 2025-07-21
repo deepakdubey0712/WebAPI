@@ -11,20 +11,26 @@ public class EmployeeGradeController : ControllerBase
     {
         _service = service;
     }
+
     [HttpGet]
     public async Task<IActionResult> GetAll() => Ok(await _service.GetAllAsync());
+
     [HttpGet("{id}")]
     public async Task<IActionResult> GetById(int id)
     {
         var employeegrade = await _service.GetByIdAsync(id);
         return employeegrade == null ? NotFound() : Ok(employeegrade);
     }
+
+
     [HttpPost]
     public async Task<IActionResult> Create(EmployeeGrade employeegrade)
     {
         var created = await _service.AddAsync(employeegrade);
         return CreatedAtAction(nameof(GetById), new { id = created.EmployeeGradeID }, created);
     }
+
+    
     [HttpPut("{id}")]
     public async Task<IActionResult> Update(int id, EmployeeGrade employeegrade)
     {
