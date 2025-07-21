@@ -9,7 +9,7 @@ namespace HRSystem.Models
 
         [Key]
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
-        [Column("employeegradeid")]
+        [Column("empgradeid")]
         public int EmployeeGradeID { get; set; }
 
         [Column("employeeid")]

@@ -1,9 +1,3 @@
-INSERT INTO Departments (DepartmentName) VALUES
-('HR'), ('Finance'), ('Engineering'), ('Marketing'), ('Sales');
-
-INSERT INTO Grades (GradeName, PromotionCycle) VALUES
-('A', 'Annual'), ('B', 'Bi-Annual'), ('C', 'Quarterly');
-
 INSERT INTO Employees (Name, DOB, DOJ) VALUES
 ('Alice Sharma', '1990-05-12', '2020-01-15'),
 ('Bob Mehta', '1985-08-23', '2018-03-10'),
@@ -11,26 +5,33 @@ INSERT INTO Employees (Name, DOB, DOJ) VALUES
 ('Diana Roy', '1988-02-14', '2019-09-20'),
 ('Ethan Desai', '1995-06-05', '2022-04-25');
 
-INSERT INTO EmployeeDepartments (EmployeeID, DepartmentID, StartDate) VALUES
-(101, 1, '2020-01-15'),
-(102, 2, '2018-03-10'),
-(103, 3, '2021-07-01'),
-(104, 4, '2019-09-20'),
-(105, 5, '2022-04-25');
+INSERT INTO Departments (DepartmentName) VALUES
+('HR'), ('Finance'), ('Engineering'), ('Marketing'), ('Sales');
 
-INSERT INTO EmployeeGrades (EmployeeID, GradeID, StartDate) VALUES
-(101, 1, '2020-01-15'),
-(102, 2, '2018-03-10'),
-(103, 3, '2021-07-01'),
-(104, 2, '2019-09-20'),
-(105, 1, '2022-04-25');
+INSERT INTO Grades (GradeName, PromotionCycle) VALUES
+('A', 'Annual'), ('B', 'Bi-Annual'), ('C', 'Quarterly');
 
-INSERT INTO SalaryComponents (ComponentName, IsTaxable) VALUES
-('Basic Pay', TRUE),
-('HRA', TRUE),
-('Transport Allowance', FALSE),
-('Medical Allowance', FALSE),
-('Bonus', TRUE);
+INSERT INTO EmployeeDepartments (EmployeeID, DepartmentID, StartDate, EndDate) VALUES
+(101, 1, '2020-01-15', '2025-07-21'),
+(102, 2, '2018-03-10', '2025-07-21'),
+(103, 3, '2021-07-01', '2025-07-21'),
+(104, 4, '2019-09-20', '2025-07-21'),
+(105, 5, '2022-04-25', '2025-07-21');
+
+INSERT INTO EmployeeGrades (EmployeeID, GradeID, StartDate, EndDate) VALUES
+(101, 1, '2020-01-15', '2025-07-21'),
+(102, 2, '2018-03-10', '2025-07-21'),
+(103, 3, '2021-07-01', '2025-07-21'),
+(104, 2, '2019-09-20', '2025-07-21'),
+(105, 1, '2022-04-25', '2025-07-21');
+
+INSERT INTO SalaryComponents (ComponentName, ComponentType, IsTaxable) VALUES
+('Basic Pay', 'Earning', TRUE),
+('House Rent Allowance', 'Earning', TRUE),
+('Medical Reimbursement', 'Earning', FALSE),
+('Provident Fund', 'Deduction', TRUE),
+('Professional Tax', 'Deduction', TRUE);
+
 
 INSERT INTO EmployeeSalaries (EmployeeID, ComponentID, Amount) VALUES
 (101, 1, 30000.00),
@@ -42,9 +43,9 @@ INSERT INTO EmployeeSalaries (EmployeeID, ComponentID, Amount) VALUES
 INSERT INTO Promotions (EmployeeID, OldGradeID, NewGradeID, PromotionDate) VALUES
 (101, 2, 1, '2021-01-01'),
 (102, 3, 2, '2019-06-01'),
-(103, NULL, 3, '2021-07-01'),
+(103, 1, 3, '2021-07-01'),
 (104, 3, 2, '2020-09-20'),
-(105, NULL, 1, '2022-04-25');
+(105, 3, 1, '2022-04-25');
 
 INSERT INTO Payslips (EmployeeID, Month, Year, PayslipDate, TotalEarnings, TotalDeductions, NetPay) VALUES
 (101, 6, 2025, '2025-06-30', 40000.00, 5000.00, 35000.00),

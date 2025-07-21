@@ -40,21 +40,28 @@ builder.Services.AddDbContext<AppDbContext>(options =>
     }
 }
 
-builder.Services.AddScoped<IEmployeeService, EmployeeService>();
-builder.Services.AddScoped<IEmployeeRepository, EmployeeRepository>();
-builder.Services.AddScoped<IEmployeeService, EmployeeService>();
-builder.Services.AddScoped<IDepartmentRepository, DepartmentRepository>();
-builder.Services.AddScoped<IDepartmentService, DepartmentService>();
-builder.Services.AddScoped<IGradeRepository, GradeRepository>();
-builder.Services.AddScoped<IGradeService, GradeService>();
-builder.Services.AddScoped<IPromotionRepository, PromotionRepository>();
-builder.Services.AddScoped<IPromotionService, PromotionService>();
-builder.Services.AddScoped<IEmployeeGradeRepository, EmployeeGradeRepository>();
-builder.Services.AddScoped<IEmployeeGradeService, EmployeeGradeService>();
 builder.Services.AddScoped<IDeductionComponentService, DeductionComponentService>();
 builder.Services.AddScoped<IDeductionComponentRepository, DeductionComponentRepository>();
+builder.Services.AddScoped<IDepartmentRepository, DepartmentRepository>();
+builder.Services.AddScoped<IDepartmentService, DepartmentService>();
+builder.Services.AddScoped<IEmployeeService, EmployeeService>();
+builder.Services.AddScoped<IEmployeeRepository, EmployeeRepository>();
 builder.Services.AddScoped<IEmployeeDepartmentService, EmployeeDepartmentService>();
 builder.Services.AddScoped<IEmployeeDepartmentRepository, EmployeeDepartmentRepository>();
+builder.Services.AddScoped<IEmployeeGradeRepository, EmployeeGradeRepository>();
+builder.Services.AddScoped<IEmployeeGradeService, EmployeeGradeService>();
+builder.Services.AddScoped<IEmployeeSalaryService, EmployeeSalaryService>();
+builder.Services.AddScoped<IEmployeeSalaryRepository, EmployeeSalaryRepository>();
+builder.Services.AddScoped<IGradeRepository, GradeRepository>();
+builder.Services.AddScoped<IGradeService, GradeService>();
+builder.Services.AddScoped<IPayslipRepository, PayslipRepository>();
+builder.Services.AddScoped<IPayslipService, PayslipService>();
+builder.Services.AddScoped<IPayslipComponentRepository, PayslipComponentRepository>();
+builder.Services.AddScoped<IPayslipComponentService, PayslipComponentService>();
+builder.Services.AddScoped<IPromotionRepository, PromotionRepository>();
+builder.Services.AddScoped<IPromotionService, PromotionService>();
+builder.Services.AddScoped<ISalaryComponentService, SalaryComponentService>();
+builder.Services.AddScoped<ISalaryComponentRepository, SalaryComponentRepository>();
 
 
 var app = builder.Build();
