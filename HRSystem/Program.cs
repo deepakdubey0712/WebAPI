@@ -17,6 +17,29 @@ builder.Services.AddDbContext<AppDbContext>(options =>
            .LogTo(Console.WriteLine));
 
 
+// Run SQL scripts to create tables, seed data, and stored procedures
+ static void RunSqlScripts(WebApplication app)
+{
+    using var scope = app.Services.CreateScope();
+    var context = scope.ServiceProvider.GetRequiredService<AppDbContext>();
+    var connection = context.Database.GetDbConnection();
+
+    string[] scriptPaths = {
+        "Scripts/CreateTables.sql",
+        "Scripts/InsertData.sql"
+    };
+
+    foreach (var path in scriptPaths)
+    {
+        var script = File.ReadAllText(path);
+        using var command = connection.CreateCommand();
+        command.CommandText = script;
+        connection.Open();
+        command.ExecuteNonQuery();
+        connection.Close();
+    }
+}
+
 builder.Services.AddScoped<IEmployeeService, EmployeeService>();
 builder.Services.AddScoped<IEmployeeRepository, EmployeeRepository>();
 builder.Services.AddScoped<IEmployeeService, EmployeeService>();
@@ -34,8 +57,6 @@ builder.Services.AddScoped<IEmployeeDepartmentService, EmployeeDepartmentService
 builder.Services.AddScoped<IEmployeeDepartmentRepository, EmployeeDepartmentRepository>();
 
 
-
-
 var app = builder.Build();
 
 // Enable Swagger in development
@@ -46,6 +67,8 @@ if (app.Environment.IsDevelopment())
     app.UseDeveloperExceptionPage();
 }
 
+
+RunSqlScripts(app);
 app.UseMiddleware<ExceptionMiddleware>();
 app.UseRouting();
 app.UseAuthorization();

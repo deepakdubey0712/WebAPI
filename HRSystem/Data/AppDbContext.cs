@@ -21,8 +21,7 @@ namespace HRSystem.Data
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             modelBuilder.Entity<Employee>().ToTable("employees", "public");
-            modelBuilder.Entity<DeductionComponent>().ToTable("deduction_components", "public");
-            modelBuilder.Entity<EmployeeDepartment>().ToTable("employee_departments", "public");
+            modelBuilder.Entity<DeductionComponent>().ToTable("deductioncomponents", "public");
             modelBuilder.Entity<EmployeeDepartment>().ToTable("employeedepartments", "public");
             modelBuilder.Entity<Department>().ToTable("departments", "public");
             modelBuilder.Entity<Grade>().ToTable("grades", "public");

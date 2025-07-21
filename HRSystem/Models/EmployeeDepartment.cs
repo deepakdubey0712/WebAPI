@@ -5,7 +5,7 @@ using System.ComponentModel.DataAnnotations.Schema;
 namespace HRSystem.Models
 {
 
-    [Table("employeedepartment")]
+    [Table("employeedepartments")]
     public class EmployeeDepartment
     {
 

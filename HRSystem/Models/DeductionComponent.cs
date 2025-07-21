@@ -2,7 +2,7 @@ using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 namespace HRSystem.Models
 {
-    [Table("deduction_components")]
+    [Table("deductioncomponents")]
     public class DeductionComponent
     {
         [Key]

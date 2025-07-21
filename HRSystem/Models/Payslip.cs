@@ -2,6 +2,7 @@ using HRSystem.Models;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 
+[Table("payslips")]
 public class Payslip
 {
     [Key]
