@@ -7,56 +7,20 @@ using HRSystem.Services;
 public class GradeController : ControllerBase
 {
     private readonly IGradeService _service;
-    private readonly IEmployeeGradeService _egservice;
 
-    private readonly IPromotionService _promservice;
-    public GradeController(IGradeService service, IEmployeeGradeService egservice, IPromotionService promservice)
+    public GradeController(IGradeService service)
     {
         _service = service;
-        _egservice = egservice;
-        _promservice = promservice;
     }
 
-    [HttpGet("grades")]
+    [HttpGet]
     public async Task<IActionResult> GetAll() => Ok(await _service.GetAllAsync());
 
-
-    [HttpPost("grades")]
+    [HttpPost]
     public async Task<IActionResult> Create(Grade grade)
     {
         var created = await _service.AddAsync(grade);
         return CreatedAtAction(nameof(GetById), new { id = created.GradeID }, created);
-    }
-
-
-    [HttpGet("employees/{id}/grades")]
-    public async Task<IActionResult> GetByEmployeeGradeId(int id)
-    {
-        var employeegrade = await _egservice.GetByIdAsync(id);
-        return employeegrade == null ? NotFound() : Ok(employeegrade);
-    }
-
-    [HttpPost("employeegrades")]
-    public async Task<IActionResult> Create(EmployeeGrade employeegrade)
-    {
-        var created = await _egservice.AddAsync(employeegrade);
-        return CreatedAtAction(nameof(GetByEmployeeGradeId), new { id = created.EmployeeGradeID }, created);
-    }
-
-
-    [HttpPost("promotions")]
-    public async Task<IActionResult> Create(Promotion promotion)
-    {
-        var createdPromotion = await _promservice.AddAsync(promotion);
-        return CreatedAtAction(nameof(GetById), new { id = createdPromotion.PromotionID }, createdPromotion);
-    }
-
-
-    [HttpGet("promotions/{employeeId}")]
-    public async Task<IActionResult> GetByEmployeeId(int employeeId)
-    {
-        var promotions = await _promservice.GetByEmployeeIdAsync(employeeId);
-        return promotions == null || !promotions.Any() ? NotFound() : Ok(promotions);
     }
 
     [HttpGet("{id}")]
