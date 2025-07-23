@@ -25,7 +25,9 @@ namespace HRSystem.WebAPI.Models
         public decimal Amount { get; set; }
 
         // Navigation properties (optional, if using EF Core relationships)
-        public Employee? Employee { get; set; }
-        public SalaryComponent? SalaryComponent { get; set; }
+        // public Employee? Employee { get; set; }
+
+        // [ForeignKey("componentid")]
+        // public SalaryComponent? SalaryComponent { get; set; }
     }
 }

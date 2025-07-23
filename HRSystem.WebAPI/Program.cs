@@ -74,7 +74,6 @@ if (app.Environment.IsDevelopment())
     app.UseDeveloperExceptionPage();
 }
 
-
 //RunSqlScripts(app);
 app.UseMiddleware<ExceptionMiddleware>();
 app.UseRouting();
