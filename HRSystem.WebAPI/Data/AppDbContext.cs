@@ -1,10 +1,19 @@
 using Microsoft.EntityFrameworkCore;
 using HRSystem.WebAPI.Models;
+using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 namespace HRSystem.WebAPI.Data
 {
     public class AppDbContext : DbContext
     {
+        public class UtcDateTimeConverter : ValueConverter<DateTime, DateTime>
+        {
+            public UtcDateTimeConverter() : base(
+                v => v.ToUniversalTime(),
+                v => DateTime.SpecifyKind(v, DateTimeKind.Utc))
+            { }
+        }
+
         public AppDbContext(DbContextOptions<AppDbContext> options) : base(options) { }
         public DbSet<Employee> Employees { get; set; }
         public DbSet<Department> Departments { get; set; }
@@ -21,6 +30,16 @@ namespace HRSystem.WebAPI.Data
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
+
+            foreach (var entityType in modelBuilder.Model.GetEntityTypes())
+            {
+                foreach (var property in entityType.GetProperties()
+                    .Where(p => p.ClrType == typeof(DateTime)))
+                {
+                    property.SetValueConverter(new UtcDateTimeConverter());
+                }
+            }
+
             modelBuilder.Entity<Employee>().ToTable("employees", "public");
             modelBuilder.Entity<DeductionComponent>().ToTable("deductioncomponents", "public");
             modelBuilder.Entity<EmployeeDepartment>().ToTable("employeedepartments", "public");

@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\ddubey2\\OneDrive - Capgemini\\Documents\\HRSystem\\hrsystem.webapi\\HRSystem.WebAPI.csproj": {}
+    "C:\\Users\\ddubey2\\OneDrive - Capgemini\\Documents\\HRSystem\\HRSystem.WebAPI\\HRSystem.WebAPI.csproj": {}
   },
   "projects": {
-    "C:\\Users\\ddubey2\\OneDrive - Capgemini\\Documents\\HRSystem\\hrsystem.webapi\\HRSystem.WebAPI.csproj": {
+    "C:\\Users\\ddubey2\\OneDrive - Capgemini\\Documents\\HRSystem\\HRSystem.WebAPI\\HRSystem.WebAPI.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\ddubey2\\OneDrive - Capgemini\\Documents\\HRSystem\\hrsystem.webapi\\HRSystem.WebAPI.csproj",
+        "projectUniqueName": "C:\\Users\\ddubey2\\OneDrive - Capgemini\\Documents\\HRSystem\\HRSystem.WebAPI\\HRSystem.WebAPI.csproj",
         "projectName": "HRSystem.WebAPI",
-        "projectPath": "C:\\Users\\ddubey2\\OneDrive - Capgemini\\Documents\\HRSystem\\hrsystem.webapi\\HRSystem.WebAPI.csproj",
+        "projectPath": "C:\\Users\\ddubey2\\OneDrive - Capgemini\\Documents\\HRSystem\\HRSystem.WebAPI\\HRSystem.WebAPI.csproj",
         "packagesPath": "C:\\Users\\ddubey2\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\ddubey2\\OneDrive - Capgemini\\Documents\\HRSystem\\hrsystem.webapi\\obj\\",
+        "outputPath": "C:\\Users\\ddubey2\\OneDrive - Capgemini\\Documents\\HRSystem\\HRSystem.WebAPI\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\ddubey2\\AppData\\Roaming\\NuGet\\NuGet.Config"

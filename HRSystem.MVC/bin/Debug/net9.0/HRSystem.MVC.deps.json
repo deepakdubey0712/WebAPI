@@ -1,0 +1,23 @@
+{
+  "runtimeTarget": {
+    "name": ".NETCoreApp,Version=v9.0",
+    "signature": ""
+  },
+  "compilationOptions": {},
+  "targets": {
+    ".NETCoreApp,Version=v9.0": {
+      "HRSystem.MVC/1.0.0": {
+        "runtime": {
+          "HRSystem.MVC.dll": {}
+        }
+      }
+    }
+  },
+  "libraries": {
+    "HRSystem.MVC/1.0.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    }
+  }
+}

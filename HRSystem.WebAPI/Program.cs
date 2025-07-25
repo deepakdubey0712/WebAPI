@@ -8,7 +8,17 @@ var builder = WebApplication.CreateBuilder(args);
 // Register services
 builder.Services.AddControllers();
 builder.Services.AddEndpointsApiExplorer();
-builder.Services.AddSwaggerGen();
+builder.Services.AddCors(options =>
+{
+    options.AddPolicy("AllowAll", policy =>
+    {
+        policy.AllowAnyOrigin().AllowAnyMethod().AllowAnyHeader();
+    });
+});
+builder.Services.AddSwaggerGen(c =>
+{
+    c.SwaggerDoc("v1", new Microsoft.OpenApi.Models.OpenApiInfo { Title = "HRSystem API", Version = "v1" });
+});
 
 // PostgreSQL connection
 builder.Services.AddDbContext<AppDbContext>(options =>
@@ -64,6 +74,7 @@ builder.Services.AddScoped<ISalaryComponentService, SalaryComponentService>();
 builder.Services.AddScoped<ISalaryComponentRepository, SalaryComponentRepository>();
 
 
+
 var app = builder.Build();
 
 // Enable Swagger in development
@@ -78,6 +89,9 @@ if (app.Environment.IsDevelopment())
 //RunSqlScripts(app);
 app.UseMiddleware<ExceptionMiddleware>();
 app.UseRouting();
+
+app.UseCors("AllowAll");
+
 app.UseAuthorization();
 app.MapControllers();
 app.Run();

@@ -1,0 +1,58 @@
+@{
+    ViewData["Title"] = "Employee Management";
+}
+
+<h2>Employee Management</h2>
+
+<button class="btn btn-success mb-3" id="btnAdd">Add Employee</button>
+
+<table id="employeeTable" class="table table-bordered table-striped">
+    <thead>
+        <tr>
+            <th>EmployeeID</th>
+            <th>Name</th>
+            <th>DOB</th>
+            <th>DOJ</th>
+            <th>Actions</th>
+        </tr>
+    </thead>
+</table>
+
+<!-- Modal -->
+<div class="modal fade" id="employeeModal" tabindex="-1" role="dialog">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <form id="employeeForm">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="employeeModalLabel">Add/Edit Employee</h5>
+                    <button type="button" class="close" data-dismiss="modal">
+                        <span>&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <input type="hidden" id="EmployeeID" name="EmployeeID" />
+                    <div class="form-group">
+                        <label>Name</label>
+                        <input type="text" id="Name" name="Name" class="form-control" required />
+                    </div>
+                    <div class="form-group">
+                        <label>DOB</label>
+                        <input type="date" id="DOB" name="DOB" class="form-control" required />
+                    </div>
+                    <div class="form-group">
+                        <label>DOJ</label>
+                        <input type="date" id="DOJ" name="DOJ" class="form-control" required />
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="submit" class="btn btn-success">Save</button>
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+@section Scripts {
+    <script src="~/js/employee.js"></script>
+}
