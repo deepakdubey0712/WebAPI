@@ -24,6 +24,6 @@ namespace HRSystem.WebAPI.Models
         public bool IsTaxable { get; set; }
 
         // Optional: Navigation property for related employee salaries
-        public ICollection<EmployeeSalary>? EmployeeSalaries { get; set; }
+        // public ICollection<EmployeeSalary>? EmployeeSalaries { get; set; }
     }
 }
