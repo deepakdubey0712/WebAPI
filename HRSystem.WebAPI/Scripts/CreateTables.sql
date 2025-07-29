@@ -15,7 +15,7 @@ CREATE TABLE IF NOT EXISTS Departments (
 -- Creating the Grades table
 CREATE TABLE IF NOT EXISTS Grades (
     GradeID INT GENERATED ALWAYS AS IDENTITY (START WITH 1 INCREMENT BY 1) PRIMARY KEY,
-    GradeName CHAR(1) CHECK (GradeName IN ('A', 'B', 'C')),
+    GradeName CHAR(1) NOT NULL,
     PromotionCycle VARCHAR(20)
 );
 

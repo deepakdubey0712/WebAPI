@@ -12,6 +12,10 @@ builder.Services.AddHttpClient<DepartmentApiService>(client =>
     client.BaseAddress = new Uri("http://localhost:5000/api/");
 });
 
+builder.Services.AddHttpClient<DeductionComponentApiService>(client =>
+{
+    client.BaseAddress = new Uri("http://localhost:5000/api/");
+});
 
 var app = builder.Build();
 

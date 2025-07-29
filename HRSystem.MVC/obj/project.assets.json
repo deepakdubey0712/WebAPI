@@ -8,19 +8,19 @@
     "net9.0": []
   },
   "packageFolders": {
-    "C:\\Users\\ddubey2\\.nuget\\packages\\": {}
+    "C:\\Users\\manishkt\\.nuget\\packages\\": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\ddubey2\\OneDrive - Capgemini\\Documents\\HRSystem\\HRSystem.MVC\\HRSystem.MVC.csproj",
+      "projectUniqueName": "C:\\Manish\\Application\\WebAPI\\HRSystem.MVC\\HRSystem.MVC.csproj",
       "projectName": "HRSystem.MVC",
-      "projectPath": "C:\\Users\\ddubey2\\OneDrive - Capgemini\\Documents\\HRSystem\\HRSystem.MVC\\HRSystem.MVC.csproj",
-      "packagesPath": "C:\\Users\\ddubey2\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\ddubey2\\OneDrive - Capgemini\\Documents\\HRSystem\\HRSystem.MVC\\obj\\",
+      "projectPath": "C:\\Manish\\Application\\WebAPI\\HRSystem.MVC\\HRSystem.MVC.csproj",
+      "packagesPath": "C:\\Users\\manishkt\\.nuget\\packages\\",
+      "outputPath": "C:\\Manish\\Application\\WebAPI\\HRSystem.MVC\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
-        "C:\\Users\\ddubey2\\AppData\\Roaming\\NuGet\\NuGet.Config"
+        "C:\\Users\\manishkt\\AppData\\Roaming\\NuGet\\NuGet.Config"
       ],
       "originalTargetFrameworks": [
         "net9.0"

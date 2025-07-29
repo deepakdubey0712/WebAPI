@@ -1,0 +1,54 @@
+@{
+    ViewData["Title"] = "Deduction Components";
+}
+
+<h2>Deduction Components</h2>
+
+<button class="btn btn-success mb-3" id="btnAdd">Add Deduction</button>
+<table id="deductioncomponentTable" class="table table-bordered table-striped">
+    <thead>
+        <tr>
+            <th>DeductionID</th>
+            <th>DeductionName</th>
+            <th>Rule</th>
+            <th>Actions</th>
+        </tr>
+    </thead>
+    <tbody>
+    </tbody>
+</table>
+
+<!-- Modal -->
+<div class="modal fade" id="deductioncomponentModal" tabindex="-1" role="dialog">
+    <div class="modal-dialog" role="document">
+    <div class="modal-content">
+        <form id="deductioncomponentForm">
+            <div class="modal-header">
+                <h5 class="modal-title" id="deductioncomponentModalLabel">Add/Edit Deduction Components</h5>
+                <button type="button" class="close" data-dismiss="modal">
+                    <span>&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <input type="hidden" id="deductionID" name="deductionID" />
+                <div class="form-group">
+                    <label for="deductioncomponentName">Deduction Name</label>
+                    <input type="text" class="form-control" id="deductionName" name="deductionName" required />
+                </div>
+                <div class="form-group">
+                    <label for="deductioncomponentRule">Deduction Rule</label>
+                    <input type="text" class="form-control" id="deductionRule" name="deductionRule" required />
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="submit" class="btn btn-success">Save</button>
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
+            </div>
+        </form>
+    </div>
+</div>
+</div>
+
+@section Scripts {
+    <script src="~/js/deductioncomponent.js"></script>
+}
