@@ -15,6 +15,7 @@ public class EmployeesController : Controller
         return View();
     }
 
+
     [HttpGet]
     public async Task<IActionResult> GetAll()
     {

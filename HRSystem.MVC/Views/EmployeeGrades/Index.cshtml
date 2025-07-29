@@ -1,0 +1,72 @@
+@{
+    ViewData["Title"] = "Employee Grades";
+}
+
+<h2>Employee Grades</h2>
+
+<button class="btn btn-success mb-3" id="btnAddGrade">Assign Grade</button>
+
+<table id="gradeTable" class="table table-bordered table-striped">
+    <thead>
+        <tr>
+            <th>ID</th>
+            <th>Employee</th>
+            <th>Grade</th>
+            <th>Start Date</th>
+            <th>End Date</th>
+            <th>Actions</th>
+        </tr>
+    </thead>
+    <tbody></tbody>
+</table>
+
+<!-- Modal -->
+<div class="modal fade" id="gradeModal" tabindex="-1" role="dialog">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <form id="gradeForm">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="gradeModalLabel">Assign Grade</h5>
+                    <button type="button" class="close" data-dismiss="modal">
+                        <span>&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <input type="hidden" id="EmployeeGradeID" name="EmployeeGradeID" />
+
+                    <div class="form-group">
+                        <label for="EmployeeID">Employee</label>
+                        <select class="form-control" id="EmployeeID" name="EmployeeID" required>
+                            <option value="">-- Select Employee --</option>
+                        </select>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="GradeID">Grade</label>
+                        <select class="form-control" id="GradeID" name="GradeID" required>
+                            <option value="">-- Select Grade --</option>
+                        </select>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="StartDate">Start Date</label>
+                        <input type="date" class="form-control" id="StartDate" name="StartDate" required />
+                    </div>
+
+                    <div class="form-group">
+                        <label for="EndDate">End Date</label>
+                        <input type="date" class="form-control" id="EndDate" name="EndDate" required />
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="submit" class="btn btn-success">Save</button>
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+@section Scripts {
+    <script src="~/js/employeegrade.js"></script>
+}

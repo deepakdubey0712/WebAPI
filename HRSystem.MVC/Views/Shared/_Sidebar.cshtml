@@ -1,3 +1,6 @@
+@{
+    var controller = ViewContext.RouteData.Values["controller"]?.ToString() ?? "";
+}
 <aside class="main-sidebar sidebar-dark-primary elevation-4">
     <!-- Brand Logo -->
     <a href="/" class="brand-link">
@@ -11,8 +14,12 @@
             <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
 
                 <!-- HR Management Menu -->
-                <li class="nav-item has-treeview">
-                    <a href="#" class="nav-link">
+
+                <li
+                    class="nav-item has-treeview @(controller.StartsWith("Employee") || controller == "Departments" ? "menu-open" : "")">
+                    <a href="#"
+                        class="nav-link @(controller.StartsWith("Employee") || controller == "Departments" ? "active" : "")">
+
                         <i class="nav-icon fas fa-user-cog"></i>
                         <p>
                             HR Mgmt.
@@ -21,24 +28,37 @@
                     </a>
                     <ul class="nav nav-treeview">
                         <li class="nav-item">
-
-                            <a href="@Url.Action("Index", "Employees")" class="nav-link ajax-link">
+                            <a href="@Url.Action("Index", "Employees")"
+                                class="nav-link @(controller == "Employees" ? "active" : "")">
                                 <i class="far fa-circle nav-icon"></i>
-                                <p>Employee Mgmt.</p>
+                                <p>Emp Mgmt.</p>
                             </a>
-
-                            <a href="@Url.Action("Index", "Departments")" class="nav-link ajax-link">
+                        </li>
+                        <li class="nav-item">
+                            <a href="@Url.Action("Index", "Departments")"
+                                class="nav-link @(controller == "Departments" ? "active" : "")">
                                 <i class="far fa-circle nav-icon"></i>
                                 <p>Department Mgmt.</p>
                             </a>
-
                         </li>
-                        <!-- Add more HR items here -->
+                        <li class="nav-item">
+                            <a href="@Url.Action("Index", "EmployeeAssignments")"
+                                class="nav-link @(controller == "EmployeeAssignments" ? "active" : "")">
+                                <i class="far fa-circle nav-icon"></i>
+                                <p>Emp Assign Mgmt.</p>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="@Url.Action("Index", "EmployeeGrades")"
+                                class="nav-link @(controller == "EmployeeGrades" ? "active" : "")">
+                                <i class="far fa-circle nav-icon"></i>
+                                <p>Emp Grade Mgmt.</p>
+                            </a>
+                        </li>
                     </ul>
                 </li>
-                           </ul>
+
+            </ul>
         </nav>
-        <!-- /.sidebar-menu -->
     </div>
-    <!-- /.sidebar -->
 </aside>

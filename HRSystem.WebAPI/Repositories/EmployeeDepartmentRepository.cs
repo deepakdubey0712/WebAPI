@@ -13,7 +13,13 @@ public class EmployeeDepartmentRepository : IEmployeeDepartmentRepository
         _context = context;
     }
 
-    public async Task<IEnumerable<EmployeeDepartment>> GetAllAsync() => await _context.EmployeeDepartments.ToListAsync();
+    // public async Task<IEnumerable<EmployeeDepartment>> GetAllAsync() => await _context.EmployeeDepartments.ToListAsync();
+    public async Task<IEnumerable<EmployeeDepartment>> GetAllAsync() =>
+    await _context.EmployeeDepartments
+        .Include(ed => ed.Employee)
+        .Include(ed => ed.Department)
+        .ToListAsync();
+
 
     public async Task<EmployeeDepartment> GetByIdAsync(int id)
     {

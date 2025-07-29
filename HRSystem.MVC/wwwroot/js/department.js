@@ -1,8 +1,9 @@
 $(document).ready(function () {
   // Initialize DataTable
   $("#departmentTable").DataTable({
-     responsive: true,
+    responsive: true,
     autoWidth: false,
+    pageLength: 5,
     dom:
       '<"row"<"col-sm-6"l><"col-sm-6"f>>' +
       '<"row"<"col-sm-12"tr>>' +
@@ -10,24 +11,36 @@ $(document).ready(function () {
 
     ajax: {
       url: "/Departments/GetAll",
-      dataSrc: "",
+
+      dataSrc: function (json) {
+        console.log("AJAX response:", json);
+
+        // Handle null or unexpected response
+        if (!json || !Array.isArray(json)) {
+          console.warn("Invalid or null response received.");
+          return []; // Return empty array to prevent DataTables error
+        }
+
+        return json;
+      },
     },
     columns: [
       { data: "departmentID" },
-      { data: "departmentname" },
+      { data: "departmentName" },
       {
         data: "departmentID",
         render: function (data) {
-          return `<button class="btn btn-sm btn-primary btn-edit" data-id="${data}">Edit</button>
-                 <button class="btn btn-sm btn-danger btn-delete" data-id="${data}">Delete</button>`;
+        return `<button type="button" class="btn btn-sm btn-primary edit" data-id="${data}"><i class="fas fa-edit"></i></button>
+                <button type="button" class="btn btn-sm btn-danger delete" data-id="${data}"><i class="fas fa-trash-alt"></i></button>`;
         },
       },
     ],
   });
 
   // Add Department
-  $("#btnAdd").click(function () {
+  $("#btnAdd").click(function (e) {
     debugger;
+    e.preventDefault();
     $("#departmentForm")[0].reset();
     $("#DepartmentID").val("");
     $("#departmentModalLabel").text("Add Department");
@@ -36,49 +49,56 @@ $(document).ready(function () {
   });
 
   // Edit Department
-  $("#departmentTable tbody").on("click", ".btn-edit", function () {
+  $("#departmentTable tbody").on("click", ".edit", function (e) {
     debugger;
+    e.preventDefault();
     $('#departmentForm button[type="submit"]').text("Update");
     const id = $(this).data("id");
     $.get(`/Departments/Get/${id}`, function (data) {
       $("#DepartmentID").val(data.departmentID);
-      $("#DepartmentName").val(data.departmentname);
+      $("#DepartmentName").val(data.departmentName);
       $("#departmentModalLabel").text("Edit Department");
       $("#departmentModal").modal("show");
     });
   });
-  
 
   // Delete Department
-  $("#departmentTable tbody").on("click", ".btn-delete", function () {
+  $("#departmentTable tbody").on("click", ".delete", function (e) {
     debugger;
+    e.preventDefault();
     const id = $(this).data("id");
     Swal.fire({
-        title: "Are you sure?",
-        text: "You won't be able to revert this!",
-        icon: "warning",
-        showCancelButton: true,
-        confirmButtonColor: "#3085d6",
-        cancelButtonColor: "#d33",
-        confirmButtonText: "Yes, delete it!",
-        }).then((result) => {
-        if (result.isConfirmed) {
-            $.ajax({
-            url: `/Departments/Delete/${id}`,
-            type: "DELETE",
-            success: function () {
-                $("#departmentTable").DataTable().ajax.reload();
-                Swal.fire("Deleted!", "Your department has been deleted.", "success");
-            },
-            error: function (xhr) {
-                Swal.fire("Error!", "There was an error deleting the department.", "error");
-            },
-            });
-        }
+      title: "Are you sure?",
+      text: "You won't be able to revert this!",
+      icon: "warning",
+      showCancelButton: true,
+      confirmButtonColor: "#3085d6",
+      cancelButtonColor: "#d33",
+      confirmButtonText: "Yes, delete it!",
+    }).then((result) => {
+      if (result.isConfirmed) {
+        $.ajax({
+          url: `/Departments/Delete/${id}`,
+          type: "DELETE",
+          success: function () {
+            $("#departmentTable").DataTable().ajax.reload();
+            Swal.fire(
+              "Deleted!",
+              "Your department has been deleted.",
+              "success"
+            );
+          },
+          error: function (xhr) {
+            Swal.fire(
+              "Error!",
+              "There was an error deleting the department.",
+              "error"
+            );
+          },
         });
+      }
+    });
   });
-
-
 
   $("#departmentForm").validate({
     rules: {
@@ -89,12 +109,11 @@ $(document).ready(function () {
     },
   });
 
-
-
   // Save Department
   $("#departmentForm").submit(function (e) {
-    e.preventDefault();
     debugger;
+    e.preventDefault();
+
     if (!$(this).valid()) {
       return; // Stop if form is invalid
     }
@@ -103,12 +122,18 @@ $(document).ready(function () {
 
     // Build the department object
     const department = {
-      DepartmentID: departmentId,
-      Name: $("#DepartmentName").val().trim(),
+      DepartmentName: $("#DepartmentName").val().trim(),
     };
 
+    // Only include DepartmentID if editing
+    if (isEdit) {
+      department.DepartmentID = parseInt(departmentId);
+    }
+
     $.ajax({
-      url: isEdit ? `/Departments/Update/${departmentId}` : "/Departments/Add",
+      url: isEdit
+        ? `/Departments/Update/${departmentId}`
+        : "/Departments/Create",
       type: isEdit ? "PUT" : "POST",
       data: JSON.stringify(department),
       contentType: "application/json",
