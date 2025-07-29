@@ -14,7 +14,13 @@ namespace HRSystem.WebAPI.Repositories
             _context = context;
         }
 
-        public async Task<IEnumerable<EmployeeGrade>> GetAllAsync() => await _context.EmployeeGrades.ToListAsync();
+        public async Task<IEnumerable<EmployeeGrade>> GetAllAsync()
+        {
+            return await _context.EmployeeGrades
+        .Include(eg => eg.Employee)
+        .Include(eg => eg.Grade)
+        .ToListAsync();
+        }
 
         public async Task<EmployeeGrade?> GetByIdAsync(int id) => await _context.EmployeeGrades.FindAsync(id);
 
@@ -41,5 +47,5 @@ namespace HRSystem.WebAPI.Repositories
             await _context.SaveChangesAsync();
             return true;
         }
-    }   
+    }
 }

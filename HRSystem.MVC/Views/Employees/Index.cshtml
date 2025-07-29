@@ -6,17 +6,19 @@
 
 <button class="btn btn-success mb-3" id="btnAdd">Add Employee</button>
 
-<table id="employeeTable" class="table table-bordered table-striped">
-    <thead>
-        <tr>
-            <th>EmployeeID</th>
-            <th>Name</th>
-            <th>DOB</th>
-            <th>DOJ</th>
-            <th>Actions</th>
-        </tr>
-    </thead>
-</table>
+<div class="table-responsive">
+    <table id="employeeTable" class="table table-bordered table-striped">
+        <thead>
+            <tr>
+                <th>EmployeeID</th>
+                <th>Name</th>
+                <th>DOB</th>
+                <th>DOJ</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+    </table>
+</div>
 
 <!-- Modal -->
 <div class="modal fade" id="employeeModal" tabindex="-1" role="dialog">
@@ -32,15 +34,15 @@
                 <div class="modal-body">
                     <input type="hidden" id="EmployeeID" name="EmployeeID" />
                     <div class="form-group">
-                        <label>Name</label>
+                        <label for="Name">Name</label>
                         <input type="text" id="Name" name="Name" class="form-control" required />
                     </div>
                     <div class="form-group">
-                        <label>DOB</label>
+                        <label for="DOB">DOB</label>
                         <input type="date" id="DOB" name="DOB" class="form-control" required />
                     </div>
                     <div class="form-group">
-                        <label>DOJ</label>
+                        <label for="DOJ">DOJ</label>
                         <input type="date" id="DOJ" name="DOJ" class="form-control" required />
                     </div>
                 </div>

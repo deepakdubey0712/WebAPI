@@ -1,7 +1,7 @@
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 
-namespace HRSystem.WebAPI.Models
+namespace HRSystem.MVC.Models
 {
     [Table("employeegrades")]
     public class EmployeeGrade
@@ -35,7 +35,7 @@ namespace HRSystem.WebAPI.Models
             set => _endDate = value.HasValue ? DateTime.SpecifyKind(value.Value, DateTimeKind.Utc) : (DateTime?)null;
         }
         
-         // Navigation properties (optional, if using EF Core relationships)
+        // Navigation properties (optional, if using EF Core relationships)
         public Employee? Employee { get; set; }
         public Grade? Grade { get; set; }
 

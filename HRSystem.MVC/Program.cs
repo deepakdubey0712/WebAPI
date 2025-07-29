@@ -12,6 +12,14 @@ builder.Services.AddHttpClient<DepartmentApiService>(client =>
     client.BaseAddress = new Uri("http://localhost:5000/api/");
 });
 
+builder.Services.AddHttpClient<EmployeeAssignmentApiService>(client =>
+{
+    client.BaseAddress = new Uri("http://localhost:5000/api/");
+});
+builder.Services.AddHttpClient<EmployeeGradeApiService>(client =>
+{
+    client.BaseAddress = new Uri("http://localhost:5000/api/");
+});
 builder.Services.AddHttpClient<DeductionComponentApiService>(client =>
 {
     client.BaseAddress = new Uri("http://localhost:5000/api/");

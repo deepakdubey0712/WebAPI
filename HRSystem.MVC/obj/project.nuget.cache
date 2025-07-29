@@ -1,8 +1,14 @@
 {
   "version": 2,
+<<<<<<< HEAD
   "dgSpecHash": "sSE0eAkK17M=",
   "success": true,
   "projectFilePath": "C:\\Manish\\Application\\WebAPI\\HRSystem.MVC\\HRSystem.MVC.csproj",
+=======
+  "dgSpecHash": "XWj2/Clzvbc=",
+  "success": true,
+  "projectFilePath": "C:\\Users\\ddubey2\\OneDrive - Capgemini\\Documents\\HRSystem\\HRSystem.MVC\\HRSystem.MVC.csproj",
+>>>>>>> ffbe2b1cde9e0bee089756b73d4efedda0633e17
   "expectedPackageFiles": [],
   "logs": []
 }

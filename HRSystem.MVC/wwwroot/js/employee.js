@@ -2,6 +2,7 @@ $(document).ready(function () {
   const table = $("#employeeTable").DataTable({
     responsive: true,
     autoWidth: false,
+    pageLength: 5,
     dom:
       '<"row"<"col-sm-6"l><"col-sm-6"f>>' +
       '<"row"<"col-sm-12"tr>>' +
@@ -25,24 +26,32 @@ $(document).ready(function () {
       {
         data: "employeeID",
         render: function (data) {
-          return `<button class="btn btn-sm btn-primary edit" data-id="${data}">Edit</button>
-                <button class="btn btn-sm btn-danger delete" data-id="${data}">Delete</button>`;
+          return `<button type="button" class="btn btn-sm btn-primary edit" data-id="${data}"><i class="fas fa-edit"></i></button>
+                <button type="button" class="btn btn-sm btn-danger delete" data-id="${data}"><i class="fas fa-trash-alt"></i></button>`;
         },
       },
     ],
   });
 
-  $("#btnAdd").click(function () {
-    debugger;
-    $("#employeeForm")[0].reset();
+  $("#btnAdd").click(function (e) {
+    e.preventDefault();
+
+    const form = $("#employeeForm")[0];
+    if (form) {
+      form.reset();
+    } else {
+      console.warn("Form #employeeForm not found.");
+    }
+
     $("#EmployeeID").val("");
     $("#employeeModalLabel").text("Add Employee");
     $('#employeeForm button[type="submit"]').text("Save");
     $("#employeeModal").modal("show");
   });
 
-  $("#employeeTable").on("click", ".edit", function () {
+  $("#employeeTable").on("click", ".edit", function (e) {
     debugger;
+    e.preventDefault();
     $('#employeeForm button[type="submit"]').text("Update");
     const id = $(this).data("id");
     $.get(`/Employees/Get/${id}`, function (data) {
@@ -69,6 +78,7 @@ $(document).ready(function () {
   });
 
   $("#employeeForm").submit(function (e) {
+    debugger;
     e.preventDefault();
     if (!$(this).valid()) {
       return; // Stop if form is invalid
@@ -112,23 +122,24 @@ $(document).ready(function () {
     });
   });
 
-  //   $("#employeeTable").on("click", ".delete", function () {
-  //     debugger;
-  //     const id = $(this).data("id");
-  //     if (confirm("Are you sure you want to delete this employee?")) {
-  //       $.ajax({
-  //         url: `/Employees/Delete/${id}`,
-  //         method: "DELETE",
-  //         success: function () {
-  //           table.ajax.reload();
-  //         },
-  //       });
-  //     }
-  //   });
+  // $("#employeeTable").on("click", ".delete", function () {
+  //   debugger;
+  //   const id = $(this).data("id");
+  //   if (confirm("Are you sure you want to delete this employee?")) {
+  //     $.ajax({
+  //       url: `/Employees/Delete/${id}`,
+  //       method: "DELETE",
+  //       success: function () {
+  //         table.ajax.reload();
+  //       },
+  //     });
+  //   }
+  // });
 
-  $("#employeeTable").on("click", ".delete", function () {
+  $("#employeeTable").on("click", ".delete", function (e) {
+    debugger;
+    e.preventDefault();
     const id = $(this).data("id");
-
     Swal.fire({
       title: "Are you sure?",
       text: "You won't be able to revert this!",

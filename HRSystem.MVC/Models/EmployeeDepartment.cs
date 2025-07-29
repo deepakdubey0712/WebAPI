@@ -1,22 +1,22 @@
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 
-namespace HRSystem.WebAPI.Models
-{
-    [Table("employeegrades")]
-    public class EmployeeGrade
-    {
 
+namespace HRSystem.MVC.Models
+{
+    [Table("employeedepartments")]
+    public class EmployeeDepartment
+    {
         [Key]
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
-        [Column("empgradeid")]
-        public int EmployeeGradeID { get; set; }
+        [Column("empdeptid")]
+        public int EmpDeptID { get; set; }
 
         [Column("employeeid")]
         public int EmployeeID { get; set; }
 
-        [Column("gradeid")]
-        public int GradeID { get; set; }
+        [Column("departmentid")]
+        public int DepartmentID { get; set; }
 
         private DateTime _startDate;
         private DateTime? _endDate;
@@ -34,10 +34,9 @@ namespace HRSystem.WebAPI.Models
             get => _endDate;
             set => _endDate = value.HasValue ? DateTime.SpecifyKind(value.Value, DateTimeKind.Utc) : (DateTime?)null;
         }
-        
-         // Navigation properties (optional, if using EF Core relationships)
-        public Employee? Employee { get; set; }
-        public Grade? Grade { get; set; }
 
+        // Navigation properties (optional, if using EF Core relationships)
+        public Employee? Employee { get; set; }
+        public Department? Department { get; set; }
     }
 }
